@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>memory game</title>
+    <style>
+        .grid-container {
+          display: grid;
+          width: 500px;
+          grid-template-columns: repeat(4,1fr);
+          background-color: #2196F3;
+          grid-gap: 7px;
+          perspective: 1000px;
+        }
+        .grid-item {
+          background-color: rgba(255, 255, 255, 0.8);
+          border: 1px solid rgba(0, 0, 0, 0.8);
+          height: 120px;
+          transform-style: preserve-3d;
+          transition: transform 0.5s;
+          position: relative;
+        }
+        .flip{
+           transform: rotateY(180deg); 
+        }
+        .flip-card-front, .flip-card-back {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+        }
+        .flip-card-front {
+          background-color: #bbb;
+          color: black;
+/*          transform: rotateY(180deg);*/
+        }
+
+        .flip-card-back {
+          background-color: #2980b9;
+          color: white;
+          transform: rotateY(180deg);
+        }
+        img{
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="grid-container">
+      <div class="grid-item" data-framework="smile">
+                  <img  class="flip-card-front" src="https://images.pexels.com/photos/2130795/pexels-photo-2130795.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500g" alt="Avatar" >
+                   <img src="https://images.pexels.com/photos/1529621/pexels-photo-1529621.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" class="flip-card-back" alt="">
+      </div>
+      <div class="grid-item" data-framework="smile">
+                  <img  class="flip-card-front" src="https://images.pexels.com/photos/2130795/pexels-photo-2130795.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500g" alt="Avatar">
+                   <img src="https://images.pexels.com/photos/1529621/pexels-photo-1529621.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" class="flip-card-back" alt="">
+      </div>
+      <div class="grid-item" data-framework="place">
+                  <img  class="flip-card-front" src="https://images.pexels.com/photos/2130795/pexels-photo-2130795.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500g" alt="Avatar">
+                   <img src="https://images.pexels.com/photos/2082949/pexels-photo-2082949.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="">
+      </div>
+      <div class="grid-item" data-framework="place">
+                  <img  class="flip-card-front" src="https://images.pexels.com/photos/2130795/pexels-photo-2130795.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500g" alt="Avatar">
+                   <img src="https://images.pexels.com/photos/2082949/pexels-photo-2082949.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="">
+      </div>
+      <div class="grid-item" data-framework="galaxy">
+                  <img  class="flip-card-front" src="https://images.pexels.com/photos/2130795/pexels-photo-2130795.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500g" alt="Avatar">
+                   <img src="https://images.pexels.com/photos/1274260/pexels-photo-1274260.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" class="flip-card-back" alt="">
+      </div>
+     <div class="grid-item" data-framework="galaxy">
+                  <img  class="flip-card-front" src="https://images.pexels.com/photos/2130795/pexels-photo-2130795.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500g" alt="Avatar">
+                   <img src="https://images.pexels.com/photos/1274260/pexels-photo-1274260.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" class="flip-card-back" alt="">
+      </div>
+     <div class="grid-item" data-framework="cartoon">
+                  <img  class="flip-card-front" src="https://images.pexels.com/photos/2130795/pexels-photo-2130795.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500g" alt="Avatar">
+                   <img src="https://images.pexels.com/photos/163036/mario-luigi-yoschi-figures-163036.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" class="flip-card-back" alt="">
+      </div>
+     <div class="grid-item" data-framework="cartoon">
+                  <img  class="flip-card-front" src="https://images.pexels.com/photos/2130795/pexels-photo-2130795.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500g" alt="Avatar">
+                   <img src="https://images.pexels.com/photos/163036/mario-luigi-yoschi-figures-163036.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" class="flip-card-back" alt="">
+      </div>
+     <div class="grid-item" data-framework="bird">
+                  <img  class="flip-card-front" src="https://images.pexels.com/photos/2130795/pexels-photo-2130795.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500g" alt="Avatar">
+                   <img src="https://images.pexels.com/photos/2662434/pexels-photo-2662434.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" class="flip-card-back" alt="">
+      </div>
+     <div class="grid-item" data-framework="bird">
+                  <img  class="flip-card-front" src="https://images.pexels.com/photos/2130795/pexels-photo-2130795.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500g" alt="Avatar">
+                   <img src="https://images.pexels.com/photos/2662434/pexels-photo-2662434.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" class="flip-card-back" alt="">
+      </div>
+      <div class="grid-item" data-framework="animal">
+                  <img  class="flip-card-front" src="https://images.pexels.com/photos/2130795/pexels-photo-2130795.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500g" alt="Avatar">
+                   <img src="https://images.pexels.com/photos/41315/africa-african-animal-cat-41315.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" class="flip-card-back" alt="">
+      </div>
+       <div class="grid-item" data-framework="animal">
+                  <img  class="flip-card-front" src="https://images.pexels.com/photos/2130795/pexels-photo-2130795.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500g" alt="Avatar">
+                   <img src="https://images.pexels.com/photos/41315/africa-african-animal-cat-41315.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" class="flip-card-back" alt="">
+      </div>
+       <div class="grid-item" data-framework="water">
+                  <img  class="flip-card-front" src="https://images.pexels.com/photos/2130795/pexels-photo-2130795.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500g" alt="Avatar">
+                   <img src="https://images.pexels.com/photos/4321565/pexels-photo-4321565.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" class="flip-card-back" alt="">
+      </div>
+      <div class="grid-item" data-framework="water">
+                  <img  class="flip-card-front" src="https://images.pexels.com/photos/2130795/pexels-photo-2130795.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500g" alt="Avatar">
+                   <img src="https://images.pexels.com/photos/4321565/pexels-photo-4321565.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" class="flip-card-back" alt="">
+      </div>
+      <div class="grid-item" data-framework="fruit">
+                  <img  class="flip-card-front" src="https://images.pexels.com/photos/2130795/pexels-photo-2130795.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500g" alt="Avatar">
+                   <img src="https://images.pexels.com/photos/1435735/pexels-photo-1435735.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" class="flip-card-back" alt="">
+      </div>
+      <div class="grid-item" data-framework="fruit">
+                  <img  class="flip-card-front" src="https://images.pexels.com/photos/2130795/pexels-photo-2130795.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500g" alt="Avatar">
+                   <img src="https://images.pexels.com/photos/1435735/pexels-photo-1435735.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" class="flip-card-back" alt="">
+      </div>
+        
+    </div>
+    <script>
+        const cards = document.querySelectorAll(".grid-item");
+        let hasFlippedCard = false;
+        let lockBoard = false;
+        let firstCard, secondCard;
+//
+        function flipCard() {
+          if (lockBoard) return;
+          if (this === firstCard) return;
+//
+          this.classList.add('flip');
+//
+          if (!hasFlippedCard) {
+            // first click
+            hasFlippedCard = true;
+            firstCard = this;
+
+            return;
+          }
+//
+          // second click
+          secondCard = this;
+
+          checkForMatch();
+        }
+
+        function checkForMatch() {
+          let isMatch =                    firstCard.dataset.framework === secondCard.dataset.framework;
+
+          isMatch ? disableCards() : unflipCards();
+        }
+
+        function disableCards() {
+          firstCard.removeEventListener('click', flipCard);
+          secondCard.removeEventListener('click', flipCard);
+
+          resetBoard();
+        }
+
+        function unflipCards() {
+          lockBoard = true;
+
+          setTimeout(() => {
+            firstCard.classList.remove('flip');
+            secondCard.classList.remove('flip');
+
+            resetBoard();
+          }, 1500);
+        }
+
+        function resetBoard() {
+          [hasFlippedCard, lockBoard] = [false, false];
+          [firstCard, secondCard] = [null, null];
+        }
+
+        (function shuffle() {
+          cards.forEach(card => {
+            let randomPos = Math.floor(Math.random() * 12);
+            card.style.order = randomPos;
+          });
+        })();
+
+        cards.forEach(card => card.addEventListener('click', flipCard));
+    </script>
+</body>
+</html>
